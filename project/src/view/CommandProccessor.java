@@ -70,7 +70,7 @@ public class CommandProccessor {
                 "4. Calendar Menu\n" +
                 "5. Notification Bar\n" +
                 "6. logout\n" +
-                "Select the corresponding number or item name to enter the desired menu item:")
+                "Select the corresponding number or item name to enter the desired menu item:");
         String input;
         while((input = scanner.nextLine()).equalsIgnoreCase("logout")){
             if(input.equals("1") || input.equalsIgnoreCase("Profile Menu")){
@@ -87,7 +87,7 @@ public class CommandProccessor {
         }
         //logout
     }
-}
+
 
 
     private void changeProfileItems(String username) {
