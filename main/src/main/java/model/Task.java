@@ -1,6 +1,5 @@
 package model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -19,6 +18,7 @@ public class Task {
         generateId();
         this.title = title;
         this.assignedUsers = new ArrayList<>();
+        tasks.add(this);
     }
 
     public LocalDateTime getCreation() {
@@ -121,8 +121,25 @@ public class Task {
         return false;
     }
 
-    public boolean removeAssignedUser(){
-        
+    public boolean removeAssignedUser(int id, String username){
+        User user;
+        Task task;
+        for (Task t : tasks) {
+            if(t.getId() == id){
+                task = t;
+                for (User assignedUser : t.getAssignedUsers()) {
+                    if(assignedUser.getUsername().equals(username)){
+                       user = assignedUser;
+                    }
+                }
+            }
+
+        }
+        if(user != null && task != null){
+           task.getAssignedUsers().remove(user);
+           return true;
+        }
+        return false;
     }
     @Override
     public String toString() {
