@@ -2,7 +2,7 @@ package model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
+//comment ro nazadam
 public class Task {
     private int id;
     private String title;
@@ -13,11 +13,14 @@ public class Task {
     private static ArrayList<Task> tasks = new ArrayList<>();
     private Priority priority;
 
-
-    public Task(String title) {
+    //constructor form : String title, Priority priority, LocalDateTime deadLine
+    //beporsam?????
+    public Task(String title, Priority priority, LocalDateTime deadLine) {
         generateId();
         this.title = title;
+        this.priority = priority;
         this.creation = LocalDateTime.now();
+        this.deadline = deadLine;
         this.assignedUsers = new ArrayList<>();
         tasks.add(this);
     }
@@ -162,7 +165,15 @@ public class Task {
 
     @Override
     public String toString() {
-        return id + " " + title;
+        return "Task Id:\t" + id + "\n" +
+                "Task Title:\t" + title + "\n" +
+                "Task Description:\t" + description + "\n" +
+                "Task Priority:\t" + priority + "\n" +
+                "Task Title:\t" + title + "\n" +
+                "Date and time of creation:\t" + creation + "\n" +
+                "Date and time of deadline:\t" + deadline + "\n" +
+                "Assigned Users:\t" + assignedUsers + "\n" +
+                "Comments:\n";
     }
 
 }
