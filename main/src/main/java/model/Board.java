@@ -4,10 +4,19 @@ import java.util.ArrayList;
 
 public class Board {
     private String name;
+    //private Leader leader;
+    private BoardState state;
     private static ArrayList<Board> boards = new ArrayList<>();
+    private ArrayList<Task> doneTasks;
+    private ArrayList<Task> failedTasks;
+
     public Board(String name) {
         this.name = name;
+        this.state = BoardState.ELEMENTAL;
+
         boards.add(this);
+        this.doneTasks = new ArrayList<>();
+        this.failedTasks = new ArrayList<>();
     }
 
     public String getName() {
@@ -38,10 +47,12 @@ public class Board {
                 board = b;
             }
         }
+
         if(board != null){
             Board.getBoards().remove(board);
             return true;
         }
         return false;
     }
+
 }
