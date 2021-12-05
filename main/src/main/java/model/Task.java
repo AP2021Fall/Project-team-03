@@ -7,19 +7,18 @@ public class Task {
     private String title;
     private User assignee;
     private LocalDateTime deadline;
-    private String leader;
-    private String proiority;
 
     public Task(String title) {
         this.title = title;
     }
 
-
     public String getId() {
         return id;
     }
 
-
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -29,13 +28,17 @@ public class Task {
         return assignee;
     }
 
-
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
+    }
 
     public LocalDateTime getDeadline() {
         return deadline;
     }
 
-
+    public void setDeadline(LocalDateTime deadline) {
+        this.deadline = deadline;
+    }
 
     @Override
     public String toString() {

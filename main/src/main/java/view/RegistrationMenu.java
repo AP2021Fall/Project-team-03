@@ -2,7 +2,8 @@ package view;
 
 import model.User;
 
-import java.time.LocalDateTime;blic class RegistrationMenu extends Menu {
+import java.time.LocalDateTime;
+public class RegistrationMenu extends Menu {
 
     public RegistrationMenu() {
         System.out.println("* Registration Menu *");
