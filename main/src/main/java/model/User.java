@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class User {
 
@@ -9,13 +10,18 @@ public class User {
     private String password;
     private String password2;
     private String email ;
-
+    private static ArrayList<User> users = new ArrayList<>();
 
     public User(String name, String username, String password, String email) {
         this.name = name;
         this.username = username;
         this.password = password;
         this.email = email;
+        users.add(this);
+    }
+
+    public static ArrayList<User> getUsers() {
+        return users;
     }
 
     public String getName() {

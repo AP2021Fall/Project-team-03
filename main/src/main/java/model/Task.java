@@ -17,6 +17,7 @@ public class Task {
     public Task(String title) {
         generateId();
         this.title = title;
+        this.creation = LocalDateTime.now();
         this.assignedUsers = new ArrayList<>();
         tasks.add(this);
     }
@@ -122,8 +123,8 @@ public class Task {
     }
 
     public boolean removeAssignedUser(int id, String username){
-        User user;
-        Task task;
+        User user = null;
+        Task task = null;
         for (Task t : tasks) {
             if(t.getId() == id){
                 task = t;
@@ -135,12 +136,30 @@ public class Task {
             }
 
         }
-        if(user != null && task != null){
+        if(user != null){
            task.getAssignedUsers().remove(user);
            return true;
         }
         return false;
     }
+
+    public boolean addAsignedUser(int id, String username){
+        User user = null;
+        for (User user1 : User.getUsers()) {
+            if(user1.getUsername().equals(username)){
+                user = user1;
+            }
+        }
+        if(user != null){
+            for (Task t : tasks) {
+                if(t.getId() == id){
+                    t.getAssignedUsers().add(user);
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return id + " " + title;
