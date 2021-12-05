@@ -1,6 +1,7 @@
 package view;
 
 import controller.DatabaseController;
+import model.Database;
 
 import java.util.Scanner;
 
