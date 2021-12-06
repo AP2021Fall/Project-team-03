@@ -1,6 +1,5 @@
 package view;
 
-public class TestCommit1 {
-
+public class TestCommit1{
 
 }
