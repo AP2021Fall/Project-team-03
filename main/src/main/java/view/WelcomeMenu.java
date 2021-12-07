@@ -1,37 +1,53 @@
 package view;
 
-public class WelcomeMenu extends Menu {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-    public WelcomeMenu() {
-        System.out.println("* Welcome to Trello *");
+public class WelcomeMenu extends Menu{
+
+    public WelcomeMenu(String name, Menu parent) {
+        super(name, parent);
+        this.subMenus.put(2, new RegisterMenu("Register Menu", this));
+        this.subMenus.put(3, new LoginMenu("Login Menu", this));
+
     }
-
     @Override
-    public Menu run() {
+    public void show(){
 
-        System.out.println(help() + "Please select a number:");
-        switch (INPUT.nextLine().trim()) {
-            case "1":
-                return new RegistrationMenu();
+        System.out.println("WeLcOmE To OuR PrOgRaM\n" +
+                "Enter \"1\" to sign up\n" +
+                "Enter \"2\" to login\n" +
+                "Enter \"end\" to exit");
+//        System.out.println("WeLcOmE To OuR PrOgRaM\n" +
+//                            "Enter your commands in the specified format\n" +
+//                            "TO SIGN UP:\n" +
+//                            "user create --username <username> --password1 <password> --password2 <password> --email Address <email>" +
+//                            "TO LOGIN:\n" +
+//                            "user login --username <username> --password <password>");
+        //System.out.println("*******" + this.name + "*******");
 
-            case "2":
-                return new LoginMenu();
+    }
+    @Override
+    public void execute(){
+        Menu nextMenu = this;
+        String input = scanner.nextLine().trim();
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(input);
+        int choice;
 
-            case "3":
-                System.out.println("Hope you great time!");
-                System.exit(0);
-
-            default:
-                System.out.println("Invalid number!\n" +
-                        "try again...");
+        if(matcher.find()){
+            choice = Integer.parseInt(input);
+            if(choice == 1){
+                nextMenu = this.getSubMenus().get(2);
+            } else if(choice == 2){
+                nextMenu = this.getSubMenus().get(3);
+            } else if(choice == 3){
+                System.exit(1);
+            } else{
+                System.out.println("Your input is invalid genius!!!");
+            }
         }
-        return this;
-    }
-
-    @Override
-    public String help() {
-        return "1. Register\n" +
-                "2. Sign in\n" +
-                "3. Exit\n";
+        nextMenu.show();
+        nextMenu.execute();
     }
 }
