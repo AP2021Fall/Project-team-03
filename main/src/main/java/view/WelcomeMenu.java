@@ -18,13 +18,6 @@ public class WelcomeMenu extends Menu{
                 "Enter \"1\" to sign up\n" +
                 "Enter \"2\" to login\n" +
                 "Enter \"end\" to exit");
-//        System.out.println("WeLcOmE To OuR PrOgRaM\n" +
-//                            "Enter your commands in the specified format\n" +
-//                            "TO SIGN UP:\n" +
-//                            "user create --username <username> --password1 <password> --password2 <password> --email Address <email>" +
-//                            "TO LOGIN:\n" +
-//                            "user login --username <username> --password <password>");
-        //System.out.println("*******" + this.name + "*******");
 
     }
     @Override

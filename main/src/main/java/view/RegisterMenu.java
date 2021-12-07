@@ -8,8 +8,7 @@ public class RegisterMenu extends Menu{
     @Override
     public void show(){
         System.out.println("*******" + this.name + "*******");
-        //System.out.println("Enter your commands in the specified format\n" +
-        //                  "user create --username <username> --password1 <password> --password2 <password> --email Address <email>");
+
         System.out.println("Write \"back\" to go to the Welcome Menu:");
 
     }
@@ -32,7 +31,8 @@ public class RegisterMenu extends Menu{
             System.err.println("Your passwords are not the same!");
             nextMenu = this;
         } else{
-            nextMenu =
+            //tabeye register
+            nextMenu = this.parent.subMenus.get(4);
         }
 
 
