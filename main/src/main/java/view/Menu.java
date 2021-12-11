@@ -1,5 +1,8 @@
 package view;
 
+import controller.DatabaseController;
+import model.Database;
+
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -12,11 +15,16 @@ public abstract class Menu {
     protected HashMap<Integer, Menu> subMenus;
     protected static Scanner scanner = new Scanner(System.in);
     protected static StringBuilder str;
+    protected final Database database;
+    protected static DatabaseController databaseController;
     public Menu(String name, Menu parent) {
         this.name = name;
         this.parent = parent;
         this.subMenus = new HashMap<>();
         this.str = new StringBuilder();
+        this.database = new Database();
+        this.databaseController = new DatabaseController(database);
+
     }
 
     public String getName() {
