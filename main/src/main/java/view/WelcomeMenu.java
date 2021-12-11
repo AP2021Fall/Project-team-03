@@ -9,7 +9,7 @@ public class WelcomeMenu extends Menu{
         super(name, parent);
         this.subMenus.put(2, new RegisterMenu("Register Menu", this));
         this.subMenus.put(3, new LoginMenu("Login Menu", this));
-
+        this.subMenus.put(4, new LoginMenu("Main Menu", this));
     }
     @Override
     public void show(){

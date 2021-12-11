@@ -1,17 +1,18 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Database {
-    private final ArrayList<User> users;
+    private static HashMap<User,Boolean> users;
     private final ArrayList<Task> tasks;
 
     {
-        users = new ArrayList<>();
+        users = new HashMap<User,Boolean>();
         tasks = new ArrayList<>();
     }
 
-    public ArrayList<User> getUsers() {
+    public static HashMap<User,Boolean> getUsers() {
         return users;
     }
 

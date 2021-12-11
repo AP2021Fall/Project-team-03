@@ -1,14 +1,13 @@
 package model;
 
-import java.util.ArrayList;
-
 public class User {
 
-    private final String name;
+
     private final String username;
     private String password1;
     private String password2;
     private String email;
+    private final String birthday;
 
     public static void main(String[] args) {
         Admin admin = new Admin("", "", ",", "");
@@ -16,19 +15,28 @@ public class User {
     }
 
 
-    public User(String name, String username, String password, String email) {
-        this.name = name;
+    public User(String username, String password, String email, String birthday) {
         this.username = username;
         this.password1 = password;
         this.email = email;
-    }
+        this.birthday = birthday;
 
-    public String getName() {
-        return name;
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public String getPassword1() {
+        return password1;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getBirthday() {
+        return birthday;
     }
 
     public void setPassword(String password, String password2) {
