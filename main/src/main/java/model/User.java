@@ -1,5 +1,7 @@
 package model;
 
+import java.util.HashMap;
+
 public class User {
 
 
@@ -8,6 +10,10 @@ public class User {
     private String password2;
     private String email;
     private final String birthday;
+    //
+    private static HashMap<User,Boolean> allUsers=new HashMap<>();// to see if user is logged in
+    private Boolean isAdmin;
+    private Boolean isLeader;
 
     public static void main(String[] args) {
         Admin admin = new Admin("", "", ",", "");
@@ -60,4 +66,18 @@ public class User {
         n++;
         return showTeam;
     }
+    //
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public boolean isLeader() {
+        return isLeader;
+    }
+
+    public static HashMap<User, Boolean> getAllUsers() {
+        return allUsers;
+    }
+
 }
