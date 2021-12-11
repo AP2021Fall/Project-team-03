@@ -21,7 +21,22 @@ public class LoginMenu extends Menu{
         String username = (str.substring(1,str.indexOf(">"))).toString();
         str.replace(0,str.length(),split[5]);
         String password = (str.substring(1,str.indexOf(">"))).toString();
-        //boolean login = manager.login(username,password);
+
+        String state = databaseController.login(username,password);
+        if(state.equalsIgnoreCase("There isn't any user with this username!")){
+            System.err.println(state);
+            nextMenu = this;
+        } else if(state.equalsIgnoreCase("Your password is incorrect")){
+            System.err.println(state);
+            nextMenu = this;
+        } else if(state.equalsIgnoreCase("You have successfully logged in")){
+            System.out.println(state);
+            nextMenu = this.parent.subMenus.get(4);
+        }
+
+        nextMenu.show();
+        nextMenu.execute();
+
     }
 
 }

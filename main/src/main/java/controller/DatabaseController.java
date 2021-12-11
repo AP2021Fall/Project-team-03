@@ -56,6 +56,26 @@ public class DatabaseController {
         }
         return false;
     }
+
+    public String login(String username, String password) {
+        User user = null;
+        for (User user1 : database.getUsers().keySet()) {
+            if(user1.getUsername().equals(username)){
+                user = user1;
+            }
+        }
+        if(user == null){
+            return "There isn't any user with this username!";
+        } else{
+            if(!user.getPassword().equals(password)){
+                return "Your password is incorrect";
+
+            }
+            database.getUsers().replace(user,true);
+            return "You have successfully logged in";
+        }
+    }
+
     //state ro moshakhas konim
     public void addUser(User user) {
         database.getUsers().put(user,true);

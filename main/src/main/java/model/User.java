@@ -27,7 +27,7 @@ public class User {
         return username;
     }
 
-    public String getPassword1() {
+    public String getPassword() {
         return password1;
     }
 
@@ -56,9 +56,8 @@ public class User {
         showTeam = "name: " + teamName + "\n";
         // showTeam += "leader: "+team.getLeader().name+"\n";
         // if(!team.getLeader().name.equals(name)){
-        showTeam += "1. " + name + "\n";
+        //showTeam += "1. " + name + "\n";
         n++;
+        return showTeam;
     }
-
-
 }
