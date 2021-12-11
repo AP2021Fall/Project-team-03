@@ -24,11 +24,16 @@ public class TeamMenu extends Menu{
 
     @Override
     public void execute() {
-        super.execute();
+
+        Menu nextMenu = this;
+        String  input = getInputFromUser("");
+
     }
     private String showCommands() {
-        return "";
+        return "Enter your commands in the specified format\n" +
+                "to ";
     }
+
 }
 
 
