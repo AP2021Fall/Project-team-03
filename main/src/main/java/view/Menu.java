@@ -50,23 +50,24 @@ public abstract class Menu {
             System.out.println("" + integer + "." + this.getSubMenus().get(integer).getName());
         }
     }
-    public void execute(){
+
+    public void execute() {
         Menu nextMenu = this;
         String input = scanner.nextLine().trim();
         Pattern pattern = Pattern.compile("\\d+");
         Matcher matcher = pattern.matcher(input);
         int choice;
-        if(matcher.find()){
+        if (matcher.find()) {
             choice = Integer.parseInt(input);
-            if(choice == 1){
-                if(this.parent == null){
+            if (choice == 1) {
+                if (this.parent == null) {
                     System.exit(1);
-                } else{
+                } else {
                     nextMenu = this.parent;
                 }
-            } else if(choice>1 && choice<(this.subMenus.size()+2)){
+            } else if (choice > 1 && choice < (this.subMenus.size() + 2)) {
                 nextMenu = this.subMenus.get(choice);
-            } else{
+            } else {
                 System.out.println("Your input is invalid!");
             }
         }
