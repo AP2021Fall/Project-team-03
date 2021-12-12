@@ -1,5 +1,4 @@
 package view;
-
 import controller.DatabaseController;
 import model.Database;
 
