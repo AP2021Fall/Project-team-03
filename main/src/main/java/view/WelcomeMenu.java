@@ -9,15 +9,16 @@ public class WelcomeMenu extends Menu{
         super(name, parent);
         this.subMenus.put(2, new RegisterMenu("Register Menu", this));
         this.subMenus.put(3, new LoginMenu("Login Menu", this));
-        this.subMenus.put(4, new LoginMenu("Main Menu", this));
+        this.subMenus.put(4, new MainMenu("Main Menu", this));
     }
     @Override
     public void show(){
 
         System.out.println("WeLcOmE To OuR PrOgRaM\n" +
+                "version 1.0.0\n" +
                 "Enter \"1\" to sign up\n" +
                 "Enter \"2\" to login\n" +
-                "Enter \"end\" to exit");
+                "Enter \"3\" to exit");
 
     }
     @Override
