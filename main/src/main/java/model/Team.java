@@ -3,7 +3,8 @@ package model;
 import java.util.ArrayList;
 
 public class Team {
-    public static ArrayList<Team> teams = new ArrayList<Team>();
+    private int id;
+    public static ArrayList<Team> allTeams = new ArrayList<Team>();
     public static ArrayList<Team> pendingTeams = new ArrayList<Team>();
 
     //
@@ -16,19 +17,35 @@ public class Team {
     private ArrayList<Task>  teamsTasks = new ArrayList<>();
 
     public static Team getTeamById(int id) {
-        for (Team team: teams)
-        //    if (team.getId() == id)
+        for (Team team: allTeams)
+            if (team.getId() == id)
                 return team;
         return null;
+    }
+
+    private int getId() {
+            if(allTeams.isEmpty()) {
+                this.id = 0;
+            }else {
+                int lastIndex=allTeams.size()-1;
+                int lastId=allTeams.get(lastIndex).getId();
+                this.id=lastId+1;
+
+            }
+            return id;
     }
     //
 
     public static ArrayList<Team> getTeams() {
-        return teams;
+        return allTeams;
     }
 
     public static ArrayList<Team> getPendingTeams() {
         return pendingTeams;
+    }
+
+    public  Team getTeamByName(String teamName) {
+        return this;
     }
 
     public ArrayList<String> getTeamMembers() {
