@@ -11,7 +11,7 @@ public class User {
     private final String username;
     public int id;
     private String password1;
-    private String password2;
+    //private String password2;
     private String email;
     private Role role;
     private final String birthday;
@@ -40,6 +40,10 @@ public class User {
         this.email = email;
         this.birthday = birthday;
 
+    }
+
+    public void setPassword1(String password1) {
+        this.password1 = password1;
     }
 
     public String getName() {
@@ -74,8 +78,8 @@ public class User {
         return birthday;
     }
 
-    public void setPassword(String password, String password2) {
-    }
+//    public void setPassword(String password, String password2) {
+//    }
 
 
     public String showTeams() {

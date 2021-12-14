@@ -8,8 +8,8 @@ public class Database {
     private final ArrayList<Task> tasks;
 
     {
-        users = new HashMap<User, Boolean>();
-        tasks = new ArrayList<>();
+        this.users = new HashMap<User, Boolean>();
+        this.tasks = new ArrayList<>();
     }
 
     public static HashMap<User, Boolean> getUsers() {
@@ -40,8 +40,8 @@ public class Database {
 
 
     public static User getUserByUsername(String username) {
-        for (User user : users) {
-            if (user.username.equals(username)) {
+        for (User user : users.keySet()) {
+            if (user.getUsername().equals(username)) {
                 return user;
             }
         }
@@ -49,8 +49,8 @@ public class Database {
     }
 
     public static boolean userExists(String username) {
-        for (User user : users) {
-            if (user.username.equals(username)) {
+        for (User user : users.keySet()) {
+            if (user.getUsername().equals(username)) {
                 return true;
             }
         }
@@ -58,8 +58,8 @@ public class Database {
     }
 
     public static boolean emailExists(String email) {
-        for (User user : users) {
-            if (user.username.equals(email)) {
+        for (User user : users.keySet()) {
+            if (user.getUsername().equals(email)) {
                 return true;
             }
         }
@@ -67,8 +67,8 @@ public class Database {
     }
 
     public static boolean userExists(String username) {
-        for (User user : users) {
-            if (user.username.equals(username)) {
+        for (User user : users.keySet()) {
+            if (user.getUsername().equals(username)) {
                 return true;
             }
         }

@@ -2,6 +2,7 @@ package controller;
 
 import model.*;
 import view.Menu;
+import view.ProfileMenu;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -9,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class DatabaseController {
 
-    private final Database database;
+    private static Database database;
 
     public DatabaseController(Database database) {
         this.database = database;
@@ -44,6 +45,16 @@ public class DatabaseController {
         return database.getTasks();
     }
 
+    public static User getOnlionUser(){
+        User u = null;
+        for (User user : database.getUsers().keySet()) {
+                if(database.getUsers().get(user)==true){
+                    u = user;
+                }
+        }
+        return u;
+
+    }
     public ArrayList<Task> getUserTasks(User user) {
         ArrayList<Task> result = new ArrayList<>();
         for (Task task : database.getTasks()) {
@@ -126,7 +137,7 @@ public class DatabaseController {
 
     }
 
-    public boolean checkRegex(String input){
+    public static boolean checkRegex(String input){
         String str = "^\\d{1,3}[A-Z]+[a-z]{3,7}$";
         Pattern pattern = Pattern.compile(str);
         Matcher matcher = pattern.matcher(input);
@@ -134,5 +145,45 @@ public class DatabaseController {
             return true;
         }
         return false;
+    }
+
+    public static String changePassword(String oldPassword, String newPassword){
+        User user = getOnlionUser();
+
+
+        int counter1 = 0;
+        int counter2 = 0;
+        if (!user.getPassword().equals(oldPassword)) {
+            //Menu.str.replace(0,Menu.str.length(),oldPassword);
+            String curPass = oldPassword;
+            while (counter1 < 2) {
+                if (!user.getPassword().equals(curPass)){
+                    curPass = ProfileMenu.handleError("1");
+                    counter2++;
+                }
+                counter1++;
+            }
+
+
+        }
+        Menu.str.replace(0,Menu.str.length(),newPassword);
+        if(counter2 == 2){
+            return "Password entered incorrectly for the second time";
+        } else{
+            if(user.getPassword().equals(newPassword)){
+                Menu.str.replace(0, Menu.str.length(), ProfileMenu.handleError("2"));
+                return Menu.str.toString();
+            } else if(!checkRegex(Menu.str.toString())){
+                Menu.str.replace(0, Menu.str.length(), ProfileMenu.handleError("3"));
+                return Menu.str.toString();
+            } else{
+                database.getUsers().remove(user);
+                user.setPassword1(newPassword);
+                database.getUsers().put(user,true);
+                return "Password has changed successfully!";
+            }
+        }
+
+
     }
 }
