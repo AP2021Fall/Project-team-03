@@ -26,6 +26,41 @@ public class Task {
         this.assignedUsers = new ArrayList<User>();
     }
 
+    public static int getId() {
+        return id;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public LocalDateTime getDeadline() {
+        return deadline;
+    }
+
+    public ArrayList<User> getAssignedUsers() {
+        return assignedUsers;
+    }
+
+    public ArrayList<String> getAssignedUserStates() {
+        return assignedUserStates;
+    }
 
     public void assignUserToTask(User user, String teamName, int taskId) {
         Task task = getTaskById(teamName, taskId);

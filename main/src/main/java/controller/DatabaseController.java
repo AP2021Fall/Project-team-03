@@ -47,7 +47,7 @@ public class DatabaseController {
     public ArrayList<Task> getUserTasks(User user) {
         ArrayList<Task> result = new ArrayList<>();
         for (Task task : database.getTasks()) {
-            if (task.getAssignee().equals(user))
+            if (task.getAssignedUsers().equals(user))
                 result.add(task);
         }
         return result;
@@ -55,7 +55,7 @@ public class DatabaseController {
 
     public Task getTaskById(String id) {
         for (Task task : database.getTasks()) {
-            if (task.getId().equals(id)) {
+            if (task.getId() == (Integer.parseInt(id))) {
                 return task;
             }
         }
@@ -109,7 +109,10 @@ public class DatabaseController {
         }
 
         if(roll.equalsIgnoreCase("Admin")){
-            database.getUsers().put(new Admin(username,password,email,birthday) ,true);
+            database.getUsers().put(new Admin
+
+
+                    (username,password,email,birthday) ,true);
         } else if(roll.equalsIgnoreCase("Leader")){
             database.getUsers().put(new Leader(username,password,email,birthday) ,true);
         }else if(roll.equalsIgnoreCase("Member")){
