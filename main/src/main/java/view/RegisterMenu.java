@@ -1,5 +1,7 @@
 package view;
 
+import controller.DatabaseController;
+
 public class RegisterMenu extends Menu{
     public RegisterMenu(String name, Menu parent) {
         super(name, parent);
@@ -20,18 +22,14 @@ public class RegisterMenu extends Menu{
                 " --email Address <email> --birthday <yyyy/mm/dd> --roll <roll>");
         //duplicate code
         String[] split = input.split("\\s+");
-        str.replace(0,str.length(),split[3]);
-        String username = (str.substring(1,str.indexOf(">"))).toString();
-        str.replace(0,str.length(),split[5]);
-        String password1 = (str.substring(1,str.indexOf(">"))).toString();
-        str.replace(0,str.length(),split[7]);
-        String password2 = (str.substring(1,str.indexOf(">"))).toString();
-        str.replace(0,str.length(),split[10]);
-        String email = (str.substring(1,str.indexOf(">"))).toString();
-        str.replace(0,str.length(),split[12]);
-        String birthday = (str.substring(1,str.indexOf(">"))).toString();
-        str.replace(0,str.length(),split[14]);
-        String roll = (str.substring(1,str.indexOf(">"))).toString();
+        String username = DatabaseController.proccessInput(split[3]);
+        String password1 = DatabaseController.proccessInput(split[5]);
+        String password2 = DatabaseController.proccessInput(split[7]);
+        String email = DatabaseController.proccessInput(split[10]);
+        String birthday = DatabaseController.proccessInput(split[12]);
+        String roll = DatabaseController.proccessInput(split[14]);
+
+
         if(!password1.equals(password2)){
             System.err.println("Your passwords are not the same!");
             nextMenu = this;

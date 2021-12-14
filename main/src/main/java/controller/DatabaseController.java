@@ -74,7 +74,7 @@ public class DatabaseController {
         return String.valueOf(task.hashCode());
     }
 
-    public String inputProccess(String input){
+    public static String proccessInput(String input){
         Menu.str.replace(0,Menu.str.length(),input);
         String username = (Menu.str.substring(1,Menu.str.indexOf(">"))).toString();
         return Menu.str.toString();

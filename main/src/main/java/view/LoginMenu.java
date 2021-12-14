@@ -1,5 +1,7 @@
 package view;
 
+import controller.DatabaseController;
+
 public class LoginMenu extends Menu{
     public LoginMenu(String name, Menu parent) {
         super(name, parent);
@@ -16,11 +18,11 @@ public class LoginMenu extends Menu{
         Menu nextMenu = this;
         String  input = getInputFromUser("Enter your commands in the specified format\n" +
         "user login --username <username> --password <password>");
+
         String[] split = input.split("\\s+");
-        str.replace(0,str.length(),split[3]);
-        String username = (str.substring(1,str.indexOf(">"))).toString();
-        str.replace(0,str.length(),split[5]);
-        String password = (str.substring(1,str.indexOf(">"))).toString();
+        String username = DatabaseController.proccessInput(split[3]);
+        String password = DatabaseController.proccessInput(split[5]);
+
 
         String state = databaseController.login(username,password);
         if(state.equalsIgnoreCase("There isn't any user with this username!")){
