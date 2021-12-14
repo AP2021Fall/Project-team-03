@@ -18,17 +18,17 @@ public class Team {
 
     public static Team getTeamById(int id) {
         for (Team team: allTeams)
-            if (team.getId() == id)
+            if (team.getTeamId() == id)
                 return team;
         return null;
     }
 
-    private int getId() {
+    public int getTeamId() {
             if(allTeams.isEmpty()) {
                 this.id = 0;
             }else {
                 int lastIndex=allTeams.size()-1;
-                int lastId=allTeams.get(lastIndex).getId();
+                int lastId=allTeams.get(lastIndex).getTeamId();
                 this.id=lastId+1;
 
             }
@@ -73,5 +73,9 @@ public class Team {
     public ScoreBoard getTeamScoreBoard() {
         return teamsScoreBoard;
     }
+    //TODO fix this method : show task in team
 
+    public String showTasks() {
+        return null;
+    }
 }

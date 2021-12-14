@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static model.Team.allTeams;
 
@@ -14,6 +15,15 @@ public class User {
     private String email;
     private Role role;
     private final String birthday;
+    private static HashMap<User,Boolean> allUsers=new HashMap<>();// to see if user is logged in
+    private Boolean isAdmin;
+    private Boolean isLeader;
+    private ArrayList<String> userTeams=new ArrayList<>();
+
+    public ArrayList<String> getUserTeams() {
+        return userTeams;
+    }
+
 
     public static void main(String[] args) {
         Admin admin = new Admin("", "", ",", "");
@@ -111,7 +121,7 @@ public class User {
     }
 
     public String showTeamTasks(String teamName) {
-        Team team = Team.getTeamName(teamName);
+        Team team = Team.getTeamByName(teamName);
         return team.showTasks();
     }
 
@@ -164,11 +174,26 @@ public class User {
 
     public boolean teamExists(int Id) {
         for (Team team : allTeams) {
-            if (team.getTeamById(Id) == id) {
+            if (team.getTeamId() == id) {
                 return true;
             }
         }
         return false;
     }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public boolean isLeader() {
+        return isLeader;
+    }
+
+    public static HashMap<User, Boolean> getAllUsers() {
+        return allUsers;
+    }
+
+
+
 
 }
