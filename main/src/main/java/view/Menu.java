@@ -14,7 +14,7 @@ public abstract class Menu {
     protected Menu parent;
     protected HashMap<Integer, Menu> subMenus;
     protected static Scanner scanner = new Scanner(System.in);
-    protected static StringBuilder str;
+    public static StringBuilder str;
     protected final Database database;
     protected static DatabaseController databaseController;
     public Menu(String name, Menu parent) {
