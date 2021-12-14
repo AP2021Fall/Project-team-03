@@ -16,16 +16,16 @@ public class DatabaseController {
     }
 
     public User getUser(String username) {
-        for (User user : database.getUsers()) {
+        for (User user : database.getUsers().keySet()) {
             if (user.getUsername().equalsIgnoreCase(username))
                 return user;
         }
         return null;
     }
 
-    public void addUser(User user) {
-        database.getUsers().add(user);
-    }
+//    public void addUser(User user) {
+//        database.getUsers().add(user);
+//    }
 
     public Task getTask(String title) {
         for (Task task : database.getTasks()) {
