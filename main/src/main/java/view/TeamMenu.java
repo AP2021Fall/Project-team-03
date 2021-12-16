@@ -17,7 +17,7 @@ public class TeamMenu extends Menu{
                 "6. View your task's options\n" +
                 "7. Go to Board Menu\n"+
                 "You can see the commands to perform the next action by writing : show commands");// case insensitive // a method for all
-      subMenus.put(2, new BoardMenu("BoardMenu", this));
+        subMenus.put(2, new BoardMenu("BoardMenu", this));
         super.show();
         // print teams
     }
@@ -26,7 +26,7 @@ public class TeamMenu extends Menu{
     public void execute() {
 
         Menu nextMenu = this;
-        String  input = getInputFromUser("");
+       // String  input = getInputFromUser("");
 
     }
     private String showCommands() {

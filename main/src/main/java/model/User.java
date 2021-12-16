@@ -95,7 +95,7 @@ public class User {
     public boolean isPasswordCorrect(String password) {
         return this.password1.equals(password);
     }
-
+/*
     public String showTeam(String teamName) {
         Team team = Team.getTeamByName(teamName);
         //  Team team = Team.getTeamByName(teamName);
@@ -123,11 +123,12 @@ public class User {
         n++;
         return showTeam;
     }
-
+    */
+/*
     public String showTeamTasks(String teamName) {
         Team team = Team.getTeamByName(teamName);
         return team.showTasks();
-    }
+    }*/
 
 //                            public String showTeam (String teamName){
 //                                Team team = Team.getTeamByName(teamName);

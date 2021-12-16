@@ -61,7 +61,7 @@ public class TeamMenuController {
 
 
 
-    }
+    }//TODO arrange method
     public void showScoreBoard (String teamName){
         for(ScoreBoard scoreBoard: ScoreBoard.getAllScoreBoards()){
             if(scoreBoard.getTeamName().equals(teamName)){
@@ -75,6 +75,9 @@ public class TeamMenuController {
             }
 
         }
+
+    }
+    public void showRoadMap(String teamName){
 
     }
 
