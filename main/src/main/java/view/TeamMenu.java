@@ -11,21 +11,24 @@ public class TeamMenu extends Menu {
     @Override
     public void show() {
 
-        subMenus.put(2, new BoardMenu("BoardMenu", this));
-        super.show();
-        System.out.println("\nIn this menu you can : \n" +
-                "1. Go to previous menu\n" +
-                "2. View your teams\n" +
-                "3. View your team's scoreboards\n" +
-                "4. View your team's roadmaps\n" +
-                "5. View your team's chatroom\n" +
-                "6. View your task's options\n" +
-                "7. Go to Board Menu\n" +
-                "You can see all commands to perform the next action by writing :\n"+
-                " show all commands\n" +
-                "You can see a specified command format by entering :\n" +
-                "Command --show <command number>\n");
-        //TODO case insensitive // a method for all
+//        subMenus.put(2, new BoardMenu("BoardMenu", this));
+//        super.show();
+        System.out.println("In this menu you can : \n" +
+                "1. Go to previous menu\n"+
+                "2. See your teams information by team name or team number\n" +
+                "3. See your selected team's scoreboard \n" +
+                "4. See your selected team's Roadmap\n" +
+                "5. See your selected team's Chatroom \n" +
+                "6. Once entered the chatroom,you can send massages, \n" +
+                "7. See all tasks of the selected team\n"+
+                "8. Access a task by it's id\n" +
+                "9. Go to Board Menu and see your team's boards(first you need to enter your team's name)\n"+
+                "10. You can see all commands to performe the next action by entering :\n"+
+                "show all commands\n"+
+                "11. You can also see a specified command format by entering :\n" +
+                "command --show <command number>\n" +
+                "choose the command number from the list above \n");
+
         // TODO print teams
     }
 
@@ -36,22 +39,22 @@ public class TeamMenu extends Menu {
 
         while (true) {
             String input = getInputFromUser("Please Enter your command");
+            if((matcher =getCommandMatcher(input,"back")).find()) {
+                nextMenu=this.parent;
+                break;
 
-            if ((matcher = getCommandMatcher(input, "show all commands")).find()) {
+            } else if ((matcher = getCommandMatcher(input, "show all commands")).find()) {
                 showAllCommands(matcher);
-            }else if((matcher=getCommandMatcher(input,"Command --show <(\\d+)>$")).find()) {
+            }else if((matcher=getCommandMatcher(input,"command --show <(\\d+)>$")).find()) {
                 showCommand(matcher);
-
-            } else if ((matcher = getCommandMatcher(input, "^show team-- ([a-zA-Z]+[a-zA-Z ]*)$")).find()) {
-                showTeam(matcher);
 
             } else  if ((matcher = getCommandMatcher(input, "^Enter team <([a-zA-Z]+[a-zA-Z ]*)>$")).find()) {
                 showTeam(matcher);
 
-            } else if ((matcher = getCommandMatcher(input, "^Scoreboard --show$")).find()) {
+            } else if ((matcher = getCommandMatcher(input, "^scoreboard --show$")).find()) {
                 showScoreBoard(matcher);
 
-            } else if ((matcher = getCommandMatcher(input, "^Roadmap --show$")).find()) {
+            } else if ((matcher = getCommandMatcher(input, "^roadmap --show$")).find()) {
                 showRoadMap(matcher);
 
             } else if ((matcher = getCommandMatcher(input, "^chatroom --show$")).find()) {
@@ -59,7 +62,7 @@ public class TeamMenu extends Menu {
 
             } else if ((matcher = getCommandMatcher(input, "^send --massage <(.+)>$")).find()) {
                 SendMassage(matcher);
-            } else if ((matcher = getCommandMatcher(input, "^Show tasks$")).find()) {
+            } else if ((matcher = getCommandMatcher(input, "^show tasks$")).find()) {
                 showTasks(matcher);
             } else if ((matcher = getCommandMatcher(input, "^show task --id \\[(\\d+)\\]$")).find()) {
                 showGivenTask(matcher);//
@@ -68,40 +71,87 @@ public class TeamMenu extends Menu {
                 break;
 
             } else {
-                System.out.println("invalid command");
+                System.out.println("Invalid command");
             }
 
         }
+        nextMenu.show();
+        nextMenu.execute();
     }
 
-    public String showAllCommands(Matcher matcher) {
-        return "Enter your commands in the specified format\n " +
-                "1* to see your teams information  enter yor team's name:\n" +
+    public void showAllCommands(Matcher matcher) {
+        System.out.println( "Enter your commands in the specified format\n " +
+                "1* to go to previous menu, enter : \n"+
+                "back\n"+
+                "2* To see your teams information, enter yor team's name:\n" +
                 "Enter team <teamName>\n" +
-                "2* you can also enter the number of the team :\n" +
-                "team's number " +
-                "3* to see your selected team's scoreboard enter :\n" +
-                "show Scoreboard \n" +
-                "4* to see your selected team's Scoreboard enter :\n" +
-                "Scoreboard --show \n" +
-                "5* to see your selected team's Roadmap enter :\n" +
-                "Roadmap --show \n" +
-                "6* to see your selected team's Chatroom enter :\n" +
-                "Chatroom --show  \n" +
-                "7* once entered the chatroom, to send massage, enter : \n" +
+                "** you can also enter the number of the team :\n" +
+                "<team's number> " +
+                "3* To see your selected team's scoreboard enter :\n" +
+                "scoreboard --show \n" +
+                "4* To see your selected team's Roadmap enter :\n" +
+                "roadmap --show \n" +
+                "5* To see your selected team's Chatroom enter :\n" +
+                "chatroom --show  \n" +
+                "6* Once entered the chatroom, to send massage, enter : \n" +
                 "send --massage <massage>\n" +
-                "8* to access a task by it's id (each task has it's own unique id), enter :\n" +
+                "7* To see all tasks of the selected team, enter :\n"+
+                "show tasks\n"+
+                "8* To access a task by it's id (each task has it's own unique id), enter :\n" +
                 "show task --id [task id]\n" +
-                "9* you can see a specified command format by entering :\n" +
-                "Command --show <command number>\n" +
+                "9* To go to Board Menu and see your team's boards(first you need to enter your team's name)\n"+
+                "\n"+//TODO finish this command
+                "10* You can see all commands by entering :\n"+
+                "show all commands\n"+
+                "11* You can see a specified command format by entering :\n" +
+                "command --show <command number>\n" +
                 "** if you don't enter the command your command in the specified format you will see this output :\n" + "" +
-                "invalid command \n";
+                "invalid command \n");
     }
     private void showCommand(Matcher matcher) {
         System.out.println("this is show command");
-        int commandNumber= Integer.parseInt(matcher.group(1));
-        System.out.println("your command number : "+ commandNumber);
+        int commandNumber = Integer.parseInt(matcher.group(1));
+        System.out.println("your command number : " + commandNumber);
+
+        if (commandNumber == 1) {
+            System.out.println("1* to go to previous menu, enter : \n" +
+                    "1\n");
+        } else if (commandNumber == 2) {
+            System.out.println("2* to see your teams information, enter yor team's name:\n" +
+                    "Enter team <teamName>\n" +
+                    "* you can also enter the number of the team :\n" +
+                    "<team's number> ");
+        } else if (commandNumber == 3) {
+            System.out.println("3* To see your selected team's scoreboard enter :\n" +
+                    "scoreboard --show \n");
+        } else if (commandNumber == 4) {
+            System.out.println("4* To see your selected team's Roadmap enter :\n" +
+                    "roadmap --show \n");
+        } else if (commandNumber == 5) {
+            System.out.println("5* To see your selected team's Chatroom enter :\n" +
+                    "chatroom --show  \n");
+        } else if (commandNumber == 6) {
+            System.out.println("6* Once entered the chatroom, to send massage, enter : \n" +
+                    "send --massage <massage>\n");
+        } else if (commandNumber == 7) {
+            System.out.println("7* To see all tasks of the selected team, enter :\n" +
+                    "show tasks\n");
+        } else if (commandNumber == 8) {
+            System.out.println("8* To access a task by it's id (each task has it's own unique id), enter :\n" +
+                    "show task --id [task id]\n");
+        } else if (commandNumber == 9) {
+            System.out.println("9* To go to Board Menu and see your team's boards(first you need to enter your team's name)\n" +
+                    "\n");
+        } else if (commandNumber == 10) {
+            System.out.println("10* You can see all commands by entering :\n" +
+                    "show all commands\n");
+        } else if (commandNumber == 11) {
+            System.out.println("11* You can see a specified command format by entering :\n" +
+                    "command --show <command number>\n");
+        }else  System.out.println("your command number is out of range !\n" +
+                "please enter a number ,starting from 1 , till 11 !\n ");
     }
+
 
     private void showGivenTask(Matcher matcher) {
         System.out.println("this is show given task");
@@ -150,4 +200,6 @@ public class TeamMenu extends Menu {
         return pattern.matcher(input.trim());
     }
 }
+
+
 

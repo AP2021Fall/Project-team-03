@@ -15,6 +15,7 @@ public class TeamMenuController {
     }
 
     public  void showAllTeams() {
+
         // check the user : not admin -> get the user by username -> list
 
 
@@ -32,7 +33,7 @@ public class TeamMenuController {
     public static User findAdmin(){
 
         for(User user: User.getAllUsers().keySet()){
-            if(user.isAdmin()){// finish is admin method in user
+            if(user.isAdmin()){
                 return user;
             }
         }
