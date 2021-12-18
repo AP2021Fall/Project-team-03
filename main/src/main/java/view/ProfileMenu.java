@@ -22,7 +22,7 @@ public class ProfileMenu extends Menu{
         );
 
     }
-
+    @Override
     public void execute(){
         Menu nextMenu = this;
 
@@ -44,13 +44,18 @@ public class ProfileMenu extends Menu{
             }
         } else if(input.startsWith("Profile --change --username")){
             String newUsername = DatabaseController.proccessInput(split[3]);
-
+            String state = DatabaseController.changeUsername(newUsername);
+            if(state.equals("error")){
+                nextMenu = this;
+            } else if(state.equals("successfull")){
+                nextMenu = this;
+            }
         } else if(input.equalsIgnoreCase("Profile --showTeams")){
 
         } else if(input.startsWith("Profile --showTeam ")){
 
         } else if(input.equalsIgnoreCase("Profile --show --myProfile")){
-
+            System.out.println(DatabaseController.showMyProfile());
         } else if(input.equalsIgnoreCase("Profile --show notifications")){
 
         }
@@ -100,5 +105,8 @@ public class ProfileMenu extends Menu{
             return "successfull";
         }
     }
+
+
+
 
 }

@@ -229,7 +229,10 @@ public class DatabaseController {
             state = ProfileMenu.handleErrorChangePass("5");
             return state;
         }
+    }
 
-
+    public static String showMyProfile(){
+        User user = getOnlionUser();
+        return user.toString();
     }
 }

@@ -15,6 +15,7 @@ public class User {
     private String email;
     private Role role;
     private final String birthday;
+    private int score;
     private static HashMap<User,Boolean> allUsers=new HashMap<>();// to see if user is logged in
     private Boolean isAdmin;
     private Boolean isLeader;
@@ -48,6 +49,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     public String getName() {
@@ -202,7 +211,15 @@ public class User {
         return allUsers;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "name=" + name + "\n" +
+                ", username=" + username + "\n" +
+                ", email=" + email + "\n" +
+                ", role=" + role + "\n" +
+                ", birthday=" + birthday + "\n" +
+                ", score=" + score + "\n" +
+                '}';
+    }
 }
