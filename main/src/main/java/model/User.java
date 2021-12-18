@@ -95,47 +95,13 @@ public class User {
 //    }
 
 
-    public String showTeams() {
-        String showTeam = "";
-        String teamName;
-        for (int i = allTeams.size(); i > 0; i--) {
-            teamName = allTeams.get(i).getTeamName();
-            showTeam += String.valueOf(allTeams.size() - i + 1) + ". " + teamName + "\n";
-        }
-        return showTeam;
-    }
+
 
     public boolean isPasswordCorrect(String password) {
         return this.password1.equals(password);
     }
 /*
-    public String showTeam(String teamName) {
-        Team team = Team.getTeamByName(teamName);
-        //  Team team = Team.getTeamByName(teamName);
-        String showTeam;
-        ArrayList<String> member = team.getTeamMembers();
-        //  ArrayList<String> member = team.getMember();
-        int n = 1;
-        showTeam = "name: " + teamName + "\n";
-        showTeam += "leader: " + team.getTeamLeaderName()+ "\n";
-        if (!team.getTeamLeaderName().equals(name)) {
-            showTeam += "1. " + name + "\n";
-            n++;
-        }
-        for (int i = 1; i <= member.size(); i++) {
-            if (member.get(i).equals(name)) {
-                member.remove(name);
-            }
-        }
-        for (String Name : member) {
-            showTeam += n + ". " + Name + "\n";
-        }
-        // showTeam += "leader: "+team.getLeader().name+"\n";
-        // if(!team.getLeader().name.equals(name)){
-        //showTeam += "1. " + name + "\n";
-        n++;
-        return showTeam;
-    }
+
     */
 /*
     public String showTeamTasks(String teamName) {

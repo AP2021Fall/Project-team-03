@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static model.Team.allTeams;
+
 public class DatabaseController {
 
     private static Database database;
@@ -229,6 +231,52 @@ public class DatabaseController {
             state = ProfileMenu.handleErrorChangePass("5");
             return state;
         }
+    }
+
+    public static String showTeams() {
+        Menu.str.delete(0, Menu.str.length());
+        String teamName;
+        for (int i = allTeams.size(); i > 0; i--) {
+            teamName = allTeams.get(i).getTeamName();
+            Menu.str.append(String.valueOf(allTeams.size() - i + 1) + ". " + teamName + "\n");
+        }
+        return Menu.str.toString();
+    }
+
+    public static Team getTeamByName(String teamName){
+        Team team1 = null;
+        for (Team team : Team.getTeams()) {
+            if(team.getTeamName().equals(teamName)){
+                team1 = team;
+            }
+        }
+        return team1;
+    }
+
+    public static String showTeam(String teamName) {
+        Team team = getTeamByName(teamName);
+        if(team == null){
+            return "1";
+        } else{
+            Menu.str.delete(0, Menu.str.length());
+            ArrayList<User> member = team.getTeamMembers();
+            Menu.str.append("name: " + teamName + "\n" +
+                    "leader: " + team.getTeamLeaderName()+ "\n");
+            int n = 1;
+            User user = getOnlionUser();
+            if (!team.getTeamLeaderName().equals(user.getUsername())) {
+                Menu.str.append("1. " + user.getUsername() + "\n");
+                n++;
+            }
+
+            member.remove(user);
+            for (User user1 : member) {
+                Menu.str.append(n + "." + user1.getUsername() + "\n");
+                n++;
+            }
+            return Menu.str.toString();
+        }
+
     }
 
     public static String showMyProfile(){

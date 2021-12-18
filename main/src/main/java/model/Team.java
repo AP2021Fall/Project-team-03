@@ -12,9 +12,9 @@ public class Team {
     private String teamName;
     private String teamLeaderName;
 
-    private ArrayList<String> teamMembers = new ArrayList<String>();
-    private ArrayList<Board> teamsBoards=new ArrayList<>();
-    private ArrayList<Task>  teamsTasks = new ArrayList<>();
+    private static ArrayList<User> teamMembers = new ArrayList<User>();
+    private static ArrayList<Board> teamsBoards=new ArrayList<>();
+    private static ArrayList<Task>  teamsTasks = new ArrayList<>();
 
     public static Team getTeamById(int id) {
         for (Team team: allTeams)
@@ -44,11 +44,11 @@ public class Team {
         return pendingTeams;
     }
 
-    public  Team getTeamByName(String teamName) {
-        return this;
-    }
+//    public  Team getTeamByName(String teamName) {
+//        return this;
+//    }
 
-    public ArrayList<String> getTeamMembers() {
+    public static ArrayList<User> getTeamMembers() {
         return teamMembers;
     }
     public ArrayList<String>getTeamMembersByTeamName (String teamName) {return teamMembers;}

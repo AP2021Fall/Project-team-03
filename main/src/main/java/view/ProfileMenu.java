@@ -51,8 +51,9 @@ public class ProfileMenu extends Menu{
                 nextMenu = this;
             }
         } else if(input.equalsIgnoreCase("Profile --showTeams")){
-
+            System.out.println(DatabaseController.showTeams());
         } else if(input.startsWith("Profile --showTeam ")){
+            String teamName = DatabaseController.proccessInput(split[2]);
 
         } else if(input.equalsIgnoreCase("Profile --show --myProfile")){
             System.out.println(DatabaseController.showMyProfile());
