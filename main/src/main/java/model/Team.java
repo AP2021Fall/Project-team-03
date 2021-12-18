@@ -12,8 +12,8 @@ public class Team {
     private String teamName;
     private String teamLeaderName;
 
-    private static ArrayList<User> teamMembers = new ArrayList<User>();
-    private static ArrayList<Board> teamsBoards=new ArrayList<>();
+    private ArrayList<User> teamMembers = new ArrayList<User>();
+    private ArrayList<Board> teamsBoards=new ArrayList<>();
     private static ArrayList<Task>  teamsTasks = new ArrayList<>();
 
     public static Team getTeamById(int id) {
@@ -48,10 +48,10 @@ public class Team {
 //        return this;
 //    }
 
-    public static ArrayList<User> getTeamMembers() {
+    public ArrayList<User> getTeamMembers() {
         return teamMembers;
     }
-    public ArrayList<String>getTeamMembersByTeamName (String teamName) {return teamMembers;}
+    //public ArrayList<String>getTeamMembersByTeamName (String teamName) {return teamMembers;}
 
 
     public ArrayList<Board> getTeamsBoards() {

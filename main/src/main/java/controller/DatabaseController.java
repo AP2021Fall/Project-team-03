@@ -26,10 +26,6 @@ public class DatabaseController {
         return null;
     }
 
-//    public void addUser(User user) {
-//        database.getUsers().add(user);
-//    }
-
     public Task getTask(String title) {
         for (Task task : database.getTasks()) {
             if (task.getTitle().equals(title))
