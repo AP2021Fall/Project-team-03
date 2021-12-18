@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -19,7 +20,8 @@ public class User {
     private static HashMap<User,Boolean> allUsers=new HashMap<>();// to see if user is logged in
     private Boolean isAdmin;
     private Boolean isLeader;
-    private ArrayList<String> userTeams=new ArrayList<>();
+    private ArrayList<LocalDateTime> logs;
+    private ArrayList<String> userTeams;
 
     public ArrayList<String> getUserTeams() {
         return userTeams;
@@ -40,7 +42,8 @@ public class User {
         this.password1 = password;
         this.email = email;
         this.birthday = birthday;
-
+        this.logs = new ArrayList<>();
+        this.userTeams =new ArrayList<>();
     }
 
     public void setPassword1(String password1) {

@@ -12,9 +12,14 @@ public class Team {
     private String teamName;
     private String teamLeaderName;
 
-    private ArrayList<User> teamMembers = new ArrayList<User>();
-    private ArrayList<Board> teamsBoards=new ArrayList<>();
+    private ArrayList<User> teamMembers;
+    private ArrayList<Board> teamsBoards;
     private static ArrayList<Task>  teamsTasks = new ArrayList<>();
+
+    public Team() {
+        this.teamMembers = new ArrayList<User>();
+        this.teamsBoards = new ArrayList<Board>();
+    }
 
     public static Team getTeamById(int id) {
         for (Team team: allTeams)
