@@ -115,7 +115,7 @@ public class DatabaseController {
                 return "This username is already registered";
             }
         }
-        if(!checkRegex(password)){
+        if(!checkPasswordRegex(password)){
             return "Select the password in the following format";
         }
 
@@ -137,10 +137,10 @@ public class DatabaseController {
 
     }
 
-    public static boolean checkRegex(String input){
+    private static boolean checkPasswordRegex(String pass){
         String str = "^\\d{1,3}[A-Z]+[a-z]{3,7}$";
         Pattern pattern = Pattern.compile(str);
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = pattern.matcher(pass);
         if(matcher.find()){
             return true;
         }
@@ -158,7 +158,7 @@ public class DatabaseController {
             String curPass = oldPassword;
             while (counter1 < 2) {
                 if (!user.getPassword().equals(curPass)){
-                    curPass = ProfileMenu.handleError("1");
+                    curPass = ProfileMenu.handleErrorChangePass("1");
                     counter2++;
                 }
                 counter1++;
@@ -167,21 +167,67 @@ public class DatabaseController {
 
         }
         Menu.str.replace(0,Menu.str.length(),newPassword);
+        String state;
         if(counter2 == 2){
-            return "Password entered incorrectly for the second time";
+            state = ProfileMenu.handleErrorChangePass("2");
+            return state;
         } else{
             if(user.getPassword().equals(newPassword)){
-                Menu.str.replace(0, Menu.str.length(), ProfileMenu.handleError("2"));
-                return Menu.str.toString();
-            } else if(!checkRegex(Menu.str.toString())){
-                Menu.str.replace(0, Menu.str.length(), ProfileMenu.handleError("3"));
-                return Menu.str.toString();
+                state = ProfileMenu.handleErrorChangePass("3");
+                return state;
+            } else if(!checkPasswordRegex(Menu.str.toString())){
+                state = ProfileMenu.handleErrorChangePass("4");
+                return state;
             } else{
                 database.getUsers().remove(user);
                 user.setPassword1(newPassword);
                 database.getUsers().put(user,true);
-                return "Password has changed successfully!";
+                state = ProfileMenu.handleErrorChangePass("5");
+                return state;
             }
+        }
+    }
+
+    private static boolean isTherethisUsername(String username){
+        for (User user : database.getUsers().keySet()) {
+            if(user.getUsername().equals(username)){
+                return true;
+            }
+        }
+       return false;
+    }
+
+    private static boolean checkUsernameRegex(String username){
+        String str = "^[A-Za-z0-9_]+$";
+        Pattern pattern = Pattern.compile(str);
+        Matcher matcher = pattern.matcher(username);
+        if(matcher.find()){
+            return true;
+        }
+        return false;
+    }
+
+    public static String changeUsername(String newUsername){
+        String state;
+        User user = getOnlionUser();
+        if(newUsername.length()<4){
+            state = ProfileMenu.handleErrorChangePass("1");
+            return state;
+        } else if(isTherethisUsername(newUsername)){
+            state = ProfileMenu.handleErrorChangePass("2");
+            return state;
+        } else if(!checkUsernameRegex(newUsername)){
+            state = ProfileMenu.handleErrorChangePass("3");
+            return state;
+        } else if(user.getUsername().equals(newUsername)){
+            state = ProfileMenu.handleErrorChangePass("4");
+            return state;
+        } else{
+            database.getUsers().remove(user);
+            user.setUsername(newUsername);
+            database.getUsers().put(user,true);
+            state = ProfileMenu.handleErrorChangePass("5");
+            return state;
         }
 
 
