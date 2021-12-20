@@ -58,6 +58,10 @@ public class User {
         this.score = score;
     }
 
+    public ArrayList<LocalDateTime> getLogs() {
+        return logs;
+    }
+
     public int getScore() {
         return score;
     }

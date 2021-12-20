@@ -4,6 +4,7 @@ import model.*;
 import view.Menu;
 import view.ProfileMenu;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -103,7 +104,10 @@ public class DatabaseController {
                 return "Your password is incorrect";
 
             }
+            LocalDateTime localDateTime = LocalDateTime.now();
+            user.getLogs().add(localDateTime);
             database.getUsers().replace(user,true);
+
             return "You have successfully logged in";
         }
     }
@@ -278,5 +282,10 @@ public class DatabaseController {
     public static String showMyProfile(){
         User user = getOnlionUser();
         return user.toString();
+    }
+
+    public static String showLogs(){
+        User user = getOnlionUser();
+        return user.getLogs().toString();
     }
 }
