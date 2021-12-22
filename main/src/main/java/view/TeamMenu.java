@@ -2,6 +2,7 @@ package view;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import controller.TeamMenuController;
 
 public class TeamMenu extends Menu {
     public TeamMenu(String name, Menu parent) {
@@ -30,6 +31,7 @@ public class TeamMenu extends Menu {
                 "choose the command number from the list above \n");
 
         // TODO print teams
+        //TeamMenuController.getTeamMenuController().showAllLoggedInUserTeams();
     }
 
     @Override
@@ -115,7 +117,7 @@ public class TeamMenu extends Menu {
 
         if (commandNumber == 1) {
             System.out.println("1* to go to previous menu, enter : \n" +
-                    "1\n");
+                    "Back\n");
         } else if (commandNumber == 2) {
             System.out.println("2* to see your teams information, enter yor team's name:\n" +
                     "Enter team <teamName>\n" +
@@ -193,6 +195,11 @@ public class TeamMenu extends Menu {
         System.out.println("this is your team name : ");
         String teamName = matcher.group(1);
         System.out.println(teamName);
+
+        TeamMenuController.selectTeam(teamName);
+        //TeamMenuController.showSelectedTeam(teamName);
+
+
     }
 
     public Matcher getCommandMatcher(String input, String regex) {
