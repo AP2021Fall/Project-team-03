@@ -93,7 +93,7 @@ public class TeamMenuController {
                 return team;
         }return null;
     }
-
+//
     public static boolean isTeamEntered (){
         if(findEnteredTeam()!=null)
             return true;
