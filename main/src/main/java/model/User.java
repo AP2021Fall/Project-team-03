@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -8,17 +9,19 @@ import static model.Team.allTeams;
 public class User {
     private final String name;
 
-    private final String username;
+    private String username;
     public int id;
     private String password1;
     //private String password2;
     private String email;
     private Role role;
     private final String birthday;
+    private int score;
     private static HashMap<User,Boolean> allUsers=new HashMap<>();// to see if user is logged in
     private Boolean isAdmin;
     private Boolean isLeader;
-    private ArrayList<String> userTeams=new ArrayList<>();
+    private ArrayList<LocalDateTime> logs;
+    private ArrayList<String> userTeams;
 
     public ArrayList<String> getUserTeams() {
         return userTeams;
@@ -39,11 +42,28 @@ public class User {
         this.password1 = password;
         this.email = email;
         this.birthday = birthday;
-
+        this.logs = new ArrayList<>();
+        this.userTeams =new ArrayList<>();
     }
 
     public void setPassword1(String password1) {
         this.password1 = password1;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public ArrayList<LocalDateTime> getLogs() {
+        return logs;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     public String getName() {
@@ -82,47 +102,13 @@ public class User {
 //    }
 
 
-    public String showTeams() {
-        String showTeam = "";
-        String teamName;
-        for (int i = allTeams.size(); i > 0; i--) {
-            teamName = allTeams.get(i).getTeamName();
-            showTeam += String.valueOf(allTeams.size() - i + 1) + ". " + teamName + "\n";
-        }
-        return showTeam;
-    }
+
 
     public boolean isPasswordCorrect(String password) {
         return this.password1.equals(password);
     }
 /*
-    public String showTeam(String teamName) {
-        Team team = Team.getTeamByName(teamName);
-        //  Team team = Team.getTeamByName(teamName);
-        String showTeam;
-        ArrayList<String> member = team.getTeamMembers();
-        //  ArrayList<String> member = team.getMember();
-        int n = 1;
-        showTeam = "name: " + teamName + "\n";
-        showTeam += "leader: " + team.getTeamLeaderName()+ "\n";
-        if (!team.getTeamLeaderName().equals(name)) {
-            showTeam += "1. " + name + "\n";
-            n++;
-        }
-        for (int i = 1; i <= member.size(); i++) {
-            if (member.get(i).equals(name)) {
-                member.remove(name);
-            }
-        }
-        for (String Name : member) {
-            showTeam += n + ". " + Name + "\n";
-        }
-        // showTeam += "leader: "+team.getLeader().name+"\n";
-        // if(!team.getLeader().name.equals(name)){
-        //showTeam += "1. " + name + "\n";
-        n++;
-        return showTeam;
-    }
+
     */
 /*
     public String showTeamTasks(String teamName) {
@@ -198,7 +184,15 @@ public class User {
         return allUsers;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "name=" + name + "\n" +
+                ", username=" + username + "\n" +
+                ", email=" + email + "\n" +
+                ", role=" + role + "\n" +
+                ", birthday=" + birthday + "\n" +
+                ", score=" + score + "\n" +
+                '}';
+    }
 }
