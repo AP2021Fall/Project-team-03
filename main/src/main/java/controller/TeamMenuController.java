@@ -1,6 +1,7 @@
 package controller;
 
 import model.ScoreBoard;
+import model.Team;
 import model.User;
 
 
@@ -80,6 +81,23 @@ public class TeamMenuController {
     }
     public void showRoadMap(String teamName){
 
+    }
+    private static void showSelectedTeamTasks(String teamName) {
+
+
+    }
+
+    private static Team findEnteredTeam() {
+        for (Team team:Team.getAllTeams().keySet()){
+            if (team.getAllTeams().get(team))
+                return team;
+        }return null;
+    }
+
+    public static boolean isTeamEntered (){
+        if(findEnteredTeam()!=null)
+            return true;
+        return false;
     }
 
 
