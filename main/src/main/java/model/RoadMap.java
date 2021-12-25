@@ -1,8 +1,7 @@
 package model;
 
-import model.User;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RoadMap {
@@ -12,8 +11,13 @@ public class RoadMap {
     private String taskTitle ;
     private Integer percentage;
     private String dateOfTask;
+    HashMap<String,Integer>taskPercentageDone =new HashMap<>();
 
-    public RoadMap(String taskTitle,Integer percentage) {
+    public HashMap<String, Integer> getTaskPercentageDoneInfo() {
+        return taskPercentageDone;
+    }
+
+    public RoadMap(String taskTitle, Integer percentage) {
         this.taskTitle = taskTitle;
         this.percentage=percentage;
     }
