@@ -53,6 +53,9 @@ public class TeamMenu extends Menu {
             } else  if ((matcher = getCommandMatcher(input, "^Enter team <([a-zA-Z]+[a-zA-Z ]*)>$")).find()) {
                 showTeam(matcher);
 
+            } else  if ((matcher = getCommandMatcher(input, "^deselect team <([a-zA-Z]+[a-zA-Z ]*)>$")).find()) {
+                deselectTeam(matcher);
+
             } else if ((matcher = getCommandMatcher(input, "^scoreboard --show$")).find()) {
                 showScoreBoard(matcher);
 
@@ -69,8 +72,6 @@ public class TeamMenu extends Menu {
             } else if ((matcher = getCommandMatcher(input, "^show task --id \\[(\\d+)\\]$")).find()) {
                 showGivenTask(matcher);//
 
-            } else if ((matcher = getCommandMatcher(input, "^end$")).find()) {
-                break;
 
             } else {
                 System.out.println("Invalid command");
@@ -81,6 +82,7 @@ public class TeamMenu extends Menu {
         nextMenu.execute();
     }
 
+
     public void showAllCommands(Matcher matcher) {
         System.out.println( "Enter your commands in the specified format\n " +
                 "1* to go to previous menu, enter : \n"+
@@ -89,6 +91,10 @@ public class TeamMenu extends Menu {
                 "Enter team <teamName>\n" +
                 "** you can also enter the number of the team :\n" +
                 "<team's number> " +
+                "*** once selected a team if you want to select another team first" +
+                "deselect your current team by entering :\n"+
+                "deselect team <teamName>\n"+
+                "then enter your next team's name\n"+
                 "3* To see your selected team's scoreboard enter :\n" +
                 "scoreboard --show \n" +
                 "4* To see your selected team's Roadmap enter :\n" +
@@ -117,12 +123,16 @@ public class TeamMenu extends Menu {
 
         if (commandNumber == 1) {
             System.out.println("1* to go to previous menu, enter : \n" +
-                    "Back\n");
+                    "back\n");
         } else if (commandNumber == 2) {
             System.out.println("2* to see your teams information, enter yor team's name:\n" +
                     "Enter team <teamName>\n" +
                     "* you can also enter the number of the team :\n" +
-                    "<team's number> ");
+                    "<team's number> "+
+                    "** once selected a team if you want to select another team first" +
+                    "deselect your current team by entering :\n"+
+                    "deselect team <teamName>\n"+
+                    "then enter your next team's name\n");
         } else if (commandNumber == 3) {
             System.out.println("3* To see your selected team's scoreboard enter :\n" +
                     "scoreboard --show \n");
@@ -155,40 +165,44 @@ public class TeamMenu extends Menu {
     }
 
 
+
+    private void deselectTeam(Matcher matcher) {
+        String teamName = matcher.group(1);
+        TeamMenuController.deselectTeam(teamName);
+
+    }
     private void showGivenTask(Matcher matcher) {
-        System.out.println("this is show given task");
         int taskID = Integer.parseInt(matcher.group(1));
-        System.out.println(taskID);
-        if (taskID != 22) System.out.println("invalid id");
+        TeamMenuController.showTaskInfoByID(taskID);
 
     }
 
     private void showTasks(Matcher matcher) {
-        System.out.println("this is show tasks");
+        TeamMenuController.showAllTasks();
 
     }
 
     private void SendMassage(Matcher matcher) {
-        System.out.println("this is send massage");
         String massageText = matcher.group(1);
         System.out.println("<senderName> : " + "<" + massageText + ">");
+        TeamMenuController.sendMassage(massageText);
 
 
     }
 
 
     private void showRoadMap(Matcher matcher) {
-        System.out.println("this is show roadmap");
+        TeamMenuController.getTeamMenuController().showRoadMap();
 
 
     }
 
     private void showChatRoom(Matcher matcher) {
-        System.out.println("this is show chatroom");
+        TeamMenuController.getTeamMenuController().showChatRoom();
     }
 
     private void showScoreBoard(Matcher matcher) {
-        System.out.println("this is show scoreboard");
+        TeamMenuController.getTeamMenuController().showScoreBoard();
     }
 
     public void showTeam(Matcher matcher) {
