@@ -40,7 +40,7 @@ public class WelcomeMenu extends Menu{
             } else{
                 System.out.println("Your input is invalid genius!!!");
             }
-        }
+        }//
         nextMenu.show();
         nextMenu.execute();
     }
