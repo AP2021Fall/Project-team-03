@@ -6,9 +6,9 @@ import java.util.HashMap;
 
 
 
-        import java.time.LocalDateTime;
-        import java.util.ArrayList;
-        import java.util.HashMap;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 //import static model.Team.allTeams;
 
@@ -153,8 +153,13 @@ public class User {
         return user.showProfile(username);
     }
 
-    private User getUserByUsername(String username) {
-        return this;
+    public static User getUserByUsername(String username) {
+        for (User user : allUsers.keySet()) {
+            if(user.getUsername().equals(username)){
+                return user;
+            }
+        }
+        return null;
     }
 
 //    public boolean teamsExists() {
