@@ -39,7 +39,7 @@ public class Register {
 
         } else {
             if (!password1.equals(password2)) {
-                System.err.println("Your passwords are not the same!");
+//                System.err.println("Your passwords are not the same!");
                 errorLabel.setText("Your passwords are not the same!");
 
                 //   nextMenu = this;
@@ -47,13 +47,13 @@ public class Register {
                 //tabeye register
                 String state = databaseController.register(fullname, username, password1, Birthday, email, roll);
                 if (state.equalsIgnoreCase("This username is already registered")) {
-                    System.err.println(state);
+//                    System.err.println(state);
                     errorLabel.setText("This username is already taken");
                     //nextMenu = this;
                 } else if (state.equalsIgnoreCase("Select the password in the following format")) {
-                    System.err.println("Select the password in the following format\n" +
-                            "Minimum 1 and maximum 3 digits at the beginning" +
-                            " - one big character - minimum 3 and maximum 7 small characters");
+//                    System.err.println("Select the password in the following format\n" +
+//                            "Minimum 1 and maximum 3 digits at the beginning" +
+//                            " - one big character - minimum 3 and maximum 7 small characters");
                     errorLabel.setText("Select the password in the following format");
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("wrong password format");
@@ -61,7 +61,7 @@ public class Register {
                     alert.showAndWait();
                     //   nextMenu = this;
                 } else if (state.equalsIgnoreCase("Your registration was successful!")) {
-                    System.out.println(state);
+//                    System.out.println(state);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("register");
                     alert.setContentText("register successfully");
