@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project03withfx.fxView.Register">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project03withfx.fxView.Register">
    <left>
       <AnchorPane prefHeight="508.0" prefWidth="707.0" BorderPane.alignment="CENTER">
          <children>
@@ -19,14 +19,15 @@
             <Label layoutX="50.0" layoutY="308.0" prefHeight="17.0" prefWidth="121.0" text="Birthday" AnchorPane.leftAnchor="60.0" />
             <Label layoutX="50.0" layoutY="354.0" prefHeight="17.0" prefWidth="121.0" text="Fullname" AnchorPane.leftAnchor="60.0" />
             <Label layoutX="146.0" layoutY="25.0" prefHeight="32.0" prefWidth="332.0" text="To Sign Up To JIRA Simply Enter Your Detail Below" />
-            <TextField fx:id="UsernameField" layoutX="238.0" layoutY="89.0" prefHeight="26.0" prefWidth="158.0" AnchorPane.rightAnchor="266.0" />
-            <TextField fx:id="EmailField" layoutX="236.0" layoutY="250.0" AnchorPane.rightAnchor="266.0" />
-            <PasswordField fx:id="PasswordField" layoutX="238.0" layoutY="139.0" AnchorPane.rightAnchor="266.0" />
-            <PasswordField fx:id="PasswordConfirmationField" layoutX="238.0" layoutY="196.0" AnchorPane.rightAnchor="266.0" />
-            <TextField fx:id="BirthdayField" layoutX="240.0" layoutY="304.0" AnchorPane.rightAnchor="266.0" />
-            <TextField fx:id="FullnameField" layoutX="240.0" layoutY="350.0" AnchorPane.rightAnchor="266.0" />
-            <Button fx:id="RegisterButtom" layoutX="238.0" layoutY="448.0" mnemonicParsing="false" onAction="#register" prefHeight="32.0" prefWidth="124.0" text="Register" />
-            <Button fx:id="BackButtom" layoutX="238.0" layoutY="492.0" mnemonicParsing="false" onAction="#goToPreviousMenu" prefHeight="32.0" prefWidth="124.0" text="Back" />
+            <TextField fx:id="UsernameField" layoutX="241.0" layoutY="88.0" prefHeight="26.0" prefWidth="158.0" AnchorPane.bottomAnchor="481.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="266.0" AnchorPane.topAnchor="90.0" />
+            <TextField fx:id="EmailField" layoutX="236.0" layoutY="250.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="266.0" AnchorPane.topAnchor="240.0" />
+            <PasswordField fx:id="PasswordField" layoutX="236.0" layoutY="139.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="266.0" AnchorPane.topAnchor="140.0" />
+            <PasswordField fx:id="PasswordConfirmationField" layoutX="236.0" layoutY="196.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="266.0" AnchorPane.topAnchor="190.0" />
+            <TextField fx:id="BirthdayField" layoutX="240.0" layoutY="304.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="266.0" AnchorPane.topAnchor="290.0" />
+            <TextField fx:id="FullnameField" layoutX="240.0" layoutY="350.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="266.0" AnchorPane.topAnchor="340.0" />
+            <Button fx:id="RegisterButtom" layoutX="238.0" layoutY="469.0" mnemonicParsing="false" onAction="#register" prefHeight="32.0" prefWidth="124.0" text="Register" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="300.0" />
+            <Button fx:id="BackButtom" layoutX="238.0" layoutY="526.0" mnemonicParsing="false" onAction="#goToPreviousMenu" prefHeight="32.0" prefWidth="124.0" text="Back" AnchorPane.leftAnchor="238.0" AnchorPane.rightAnchor="300.0" />
+            <Label fx:id="errorLabel" layoutX="153.0" layoutY="406.0" prefHeight="27.0" prefWidth="353.0" AnchorPane.topAnchor="400.0" />
          </children>
       </AnchorPane>
    </left>
