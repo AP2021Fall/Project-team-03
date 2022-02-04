@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
         <?import javafx.scene.control.Label?>
@@ -10,14 +9,16 @@
         <?import javafx.scene.layout.AnchorPane?>
         <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="702.0"  xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<BorderPane  xmlns="http://javafx.com/javafx"
+             xmlns:fx="http://javafx.com/fxml"
+             maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="702.0" >
 <center>
     <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <children>
             <Label layoutX="22.0" layoutY="30.0" prefHeight="38.0" prefWidth="140.0" text="Welcome To main menu" />
             <ImageView fitHeight="296.0" fitWidth="300.0" layoutX="388.0" layoutY="143.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="388.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="143.0">
                 <image>
-                    <Image url="@../resources/main%20menu.jpeg" />
+                    <Image url="" />
                 </image>
             </ImageView>
         </children>
