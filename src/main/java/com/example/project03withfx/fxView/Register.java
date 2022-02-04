@@ -74,6 +74,7 @@ public class Register {
     }
 
     public void goToPreviousMenu(ActionEvent actionEvent) throws IOException {
+        System.out.println(getClass().getResource("login.fxml"));
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         ((Stage) pane.getScene().getWindow()).setScene(new Scene(root));
 

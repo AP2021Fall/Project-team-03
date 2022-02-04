@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="graphics_AP" />
+        <module name="project03withfx" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
