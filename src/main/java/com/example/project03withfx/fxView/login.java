@@ -1,6 +1,7 @@
 package com.example.project03withfx.fxView;
 
 
+import com.example.project03withfx.HelloApplication;
 import com.example.project03withfx.model.Role;
 import com.example.project03withfx.model.User;
 import javafx.event.ActionEvent;
@@ -55,8 +56,10 @@ public class login {
     }
 
     public void goToRegister(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Register.fxml"));
+        Parent root = FXMLLoader.load(HelloApplication.class.getResource("Register.fxml"));
         ((Stage) pane.getScene().getWindow()).setScene(new Scene(root));
+
+
 
     }
 }
