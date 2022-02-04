@@ -11,10 +11,11 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        stage.setTitle("Hello World");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Register.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Register to Jira!");
         stage.setResizable(false);
-        stage.setScene(new Scene(root));
+        stage.setScene(scene);
         stage.show();
     }
 
