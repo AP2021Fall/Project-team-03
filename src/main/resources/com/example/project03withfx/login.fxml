@@ -10,7 +10,7 @@
 
 <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project03withfx.fxView.login">
     <right>
-        <AnchorPane prefHeight="400.0" prefWidth="286.0" BorderPane.alignment="CENTER">
+        <AnchorPane id="styleSheet" prefHeight="400.0" prefWidth="286.0" stylesheets="@../../../../../../../../preparing%20the%20prpject/roxy/css/style.min.css" BorderPane.alignment="CENTER">
             <children>
                 <TextField fx:id="usernameField" layoutX="109.0" layoutY="86.0" />
                 <Button fx:id="loginButton" layoutX="158.0" layoutY="200.0" mnemonicParsing="false" onAction="#login" text="sign in" />
